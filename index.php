@@ -10,8 +10,8 @@ $y= 2;
 $text = <<<TEXT
 
 Line $x
-line $y
-line 3
+Line $y
+Line 3
 TEXT;
 
 echo nl2br($text);
@@ -19,11 +19,13 @@ echo nl2br($text);
 //Nowdoc - opposite - cant use variables in here, just like we cant with single quotes in normal strings
 //The difference in syntax here is that here the idetifire must be wrapped in single quotes
 
-$text = <<<'TEXT'
+// $text = <<<'TEXT'
 
-Line $x
-line $y
-line 3
-TEXT;
+// Line $x
+// line $y
+// line 3
+// TEXT;
 
-echo nl2br($text);
+// //unset($text); - this destroys the variable
+
+// echo nl2br($text);
