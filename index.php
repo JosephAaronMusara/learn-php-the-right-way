@@ -1,12 +1,21 @@
 <?php
 
-$array = ['a'=>1, 'b'=>null];
+//Control Statements
+//if , else, elseif
 
-var_dump(array_key_exists("", $array)); //Tells you if the key ctually exists in the array
-echo '<pre>';
+$score = 45;
+if($score>=85){
+    echo "A";
+}else{
+    echo $score .' is not an A';
+}
+// $array = ['a'=>1, 'b'=>null];
 
-var_dump(isset($array['b'])); //will tell you if the key exists and is not now
-echo '</pre>';
+// var_dump(array_key_exists("", $array)); //Tells you if the key ctually exists in the array
+// echo '<pre>';
+
+// var_dump(isset($array['b'])); //will tell you if the key exists and is not now
+// echo '</pre>';
 
 //Strings
 
@@ -39,7 +48,7 @@ echo '</pre>';
 // echo nl2br($text);
 
 //ARAYS
-$y =77;
+// $y =77;
 
-$x =$y ?? 'HELLO'; //x = hello only if y is null, else x = y
-var_dump($x);
+// $x =$y ?? 'HELLO'; //x = hello only if y is null, else x = y
+// var_dump($x);
