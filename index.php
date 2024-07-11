@@ -1,54 +1,20 @@
-<?php
-
-//Control Statements
-//if , else, elseif
-
-$score = 45;
-if($score>=85){
-    echo "A";
-}else{
-    echo $score .' is not an A';
-}
-// $array = ['a'=>1, 'b'=>null];
-
-// var_dump(array_key_exists("", $array)); //Tells you if the key ctually exists in the array
-// echo '<pre>';
-
-// var_dump(isset($array['b'])); //will tell you if the key exists and is not now
-// echo '</pre>';
-
-//Strings
-
-//Heredoc - as if in "" - can have variables
-
-// $x=1;
-// $y= 2;
-
-// $text = <<<TEXT
-
-// Line $x
-// Line $y
-// Line 3
-// TEXT;
-
-// echo nl2br($text);
-
-//Nowdoc - opposite - cant use variables in here, just like we cant with single quotes in normal strings
-//The difference in syntax here is that here the idetifire must be wrapped in single quotes
-
-// $text = <<<'TEXT'
-
-// Line $x
-// line $y
-// line 3
-// TEXT;
-
-// //unset($text); - this destroys the variable
-
-// echo nl2br($text);
-
-//ARAYS
-// $y =77;
-
-// $x =$y ?? 'HELLO'; //x = hello only if y is null, else x = y
-// var_dump($x);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php $score = 65; ?>
+    <?php if($score>=90):?>
+        <strong style="color: green;">A</strong>
+    <?php elseif($score>=80):?>
+        <strong style="color: aqua;">B</strong>
+    <?php elseif($score>=70):?>
+        <strong style="color: blue;">C</strong>
+    <?php else:?>
+        <strong style="color: red;">F</strong>
+    <?php endif?>
+</body>
+</html>
