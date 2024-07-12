@@ -1,16 +1,14 @@
 <?php
 /** variable, anonymous and arrow functions */
 
-//variable:
+//anonymous: functions without names, end with a ; , can be stored in variables since they are expressions
+// can use global variables though the use function
 
-function sum(...$numbers):int|float{
-
+$num = 2;
+$x = function (...$numbers) use ($num): int|float {
+    $num +=12;
+    echo "$num<br />";
     return array_sum($numbers);
-}
-$x='sum';
-
-if(is_callable($x)){
-echo $x(3,5,7,9,4,2); //in this case, $x is a variable, which is converted to the function
-}else{
-    echo 'not callable <br />';
-}
+};
+echo $x(1, 2, 3).'<br />';
+echo $num;
