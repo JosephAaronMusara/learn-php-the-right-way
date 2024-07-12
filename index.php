@@ -1,29 +1,30 @@
 <?php
-//LOOPS
+/**return/ declare/ goto */
 
-//While
-// $num =0;
-// while($num <=20){
-//     echo $num++ .'<br/>';
+/** Return: Stops the execution of where it is called from e.g */
+//If in a function: it breaks out of the function
+//if in a global scope, it terminates the whole program
+
+/**DECLARE */
+
+//ticks - useless in practice
+// function onTick(){
+//     echo 'Tick<br />';
+// }
+// register_tick_function('onTick');
+// declare(ticks= 1);
+// $i =0;
+// $lenght = 10;
+// while($i < $lenght){
+//     echo $i++ .'<br/>';
 // }
 
-//do-----while
-// $num =25;
-// do{
-//     echo $num-- .'<br/>';
-// }while($num>10);
+//strict_types -usefull
+//forces the datatypes to be exact
 
-//for
-// for( $i = 0; $i < 10; $i++ ){
-//     echo "$i <br>";
-// }
-//foreach--works on arrays and objects 'only'. The key variable is not destroyed after
-$programmingLanguages = ['Python', 'PHP','C#','Java','Kotlin'];
-// echo''. implode(', ', $programmingLanguages) .'';
-foreach ($programmingLanguages as $language) {
-    echo "$language<br/>";
+declare(strict_types= 1);
+function sum(int $a, int $b){
+    return $a + $b;
 }
-unset($language);
-$language ='Hasvatu';
-echo "<br>$language";
-//So you have to manually unset it 
+
+echo sum(40,6);
