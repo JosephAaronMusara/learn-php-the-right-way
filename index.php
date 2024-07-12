@@ -7,8 +7,7 @@ $sum = function (callable $callback, int|float ...$numbers): int|float {
     return $callback(array_sum($numbers));
 };
 
-echo $sum('ehe',5,6,8);
+echo $sum(function ($element){
+    return $element * 3;
+},5,6,8);
 
-function ehe($element){
-    return $element * 2;
-}
