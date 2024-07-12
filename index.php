@@ -27,4 +27,4 @@ function sum(int $a, int $b){
     return $a + $b;
 }
 
-echo sum(40,6);
+//echo sum(40,6);
