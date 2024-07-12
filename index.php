@@ -1,14 +1,18 @@
 <?php
 /** variable, anonymous and arrow functions */
 
-//anonymous: functions without names, end with a ; , can be stored in variables since they are expressions
-// can use global variables though the use function
+//call back: when a fxn is passed to another function as an arg and then called inside that fxn
 
-$num = 2;
-$x = function (...$numbers) use ($num): int|float {
-    $num +=12;
-    echo "$num<br />";
-    return array_sum($numbers);
-};
-echo $x(1, 2, 3).'<br />';
-echo $num;
+
+
+
+
+$array =[1,2,3,4,5];
+$array2 = array_map(function($element){
+    return $element**2;
+}, $array);
+
+echo '<pre>';
+print_r($array);
+print_r($array2);
+echo '<pre/>';
