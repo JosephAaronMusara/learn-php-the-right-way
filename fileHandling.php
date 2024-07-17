@@ -5,12 +5,14 @@
 
 //checking file existence
 
-if(file_exists('boom1000.txt')){
-    echo filesize('boom1000.txt');
-    file_put_contents('boom1000.txt',' zvakanaka mambo');
-    clearstatcache();
-    echo filesize('boom1000.txt');
+if(! file_exists('boom1000.txt')){
+
+    echo 'file not found';
     
 }else{
-    echo 'file does not exist';
+    $file = fopen('boom1000.txt','r');
+    while(($line = fgets($file)) !== false) {
+        echo "$line <br />";
+    }
+
 }
