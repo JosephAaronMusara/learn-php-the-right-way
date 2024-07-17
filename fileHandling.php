@@ -14,5 +14,8 @@ if(! file_exists('boom1000.txt')){
     while(($line = fgets($file)) !== false) {
         echo "$line <br />";
     }
+    fclose($file);
 
 }
+$content = file_get_contents('boom1000.txt');
+echo $content;
