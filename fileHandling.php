@@ -25,3 +25,5 @@
 
 // unlink('uncle.txt');//deleting a file
 copy('uncle.txt','joe.docx');// to move or rename, use remane on both files and dirs
+$ehe = pathinfo('joe.docx');
+print_r($ehe);
