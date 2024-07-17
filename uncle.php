@@ -1,30 +1,81 @@
 <?php
-/* Date & time */
-date_default_timezone_set("Asia/Hong_Kong");
 
-echo date_default_timezone_get() .'<br /><br />';
+require 'helper.php';
+//Arrays
+$items =['a'=>1,'b'=>2,'c'=>3,'d'=>4,'e'=>5,'f'=>2];
 
-echo date('n/d/Y g:ia',strtotime('tomorrow')) .'<br /><br />';
-echo date('n/d/Y g:ia',strtotime('first day of february')) .'<br /><br />';
-echo date('n/d/Y g:ia',strtotime('last day of march')) .'<br /><br />';
-echo date('n/d/Y g:ia',strtotime('last day of december 2019')) .'<br /><br />';
-$date = date('n/d/Y g:ia',strtotime('second friday of August')) .'<br /><br />';
+//array_chunk splits the array into chuncks of specified sizes
+nicePrint(array_chunk($items,2,true));//true is for key preservation
 
-echo '<pre>';
-print_r(date_parse_from_format('n/d/Y g:ia',$date)) .'<br /><br />';
-echo '</pre>';
+//array_combine combines 2 arrays, using the first 1 as keys and second as value and will throw an error of the number of elements in the arrays are not the same
+$array1 = ['a','b','c','d'];
+$array2 = [1,2,3,4];
+nicePrint(array_combine($array1, $array2));
+
+//destructuring
+[$a, $b,,$c] = $array2;
+echo "$a,$b,$c<br />----------------------------------------<br />";
+//array_filter
+$array = [1,2,3,4,5,6,7,8,9,10];
+$even = array_filter($array,fn($num)=> $num % 2 ===0);//if you dont include a callback, it will just filter the false valuea
+$even = array_values($even);
+nicePrint($even);
+
+//array_keys--- returns keys
+$keys = array_keys($items);
+nicePrint($keys);
+$keys = array_keys($items,2);//this does loose comparison unless you pass in the third argument, true
+nicePrint($keys);
+
+//array_map
+$mapped = array_map(fn($num, $num2) => $num * $num2,$array,$array2);
+nicePrint($mapped);
+
+//array_merge = merging arrays
+$merged = array_merge($array1, $array2);
+nicePrint($merged);
+
+// array_reduce(array $array, callable $callback, mixed $initialValue = null): mixed
+
+$invoiceItems = [
+    ['price' => 9.99, 'qty' => 3, 'desc' => 'Item 1'],
+    ['price' => 29.99, 'qty' => 1, 'desc' => 'Item 2'],
+    ['price' => 149, 'qty' => 1, 'desc' => 'Item 3'],
+    ['price' => 14.99, 'qty' => 2, 'desc' => 'Item 4'],
+    ['price' => 4.99, 'qty' => 4, 'desc' => 'Item 5']
+];
+
+$total = array_reduce(
+    $invoiceItems,
+    fn($sum, $item) => $sum + $item['qty'] * $item['price']
+);
+
+echo "$total <br />-------------------------------------------------<br />";
 
 
-$currentTime = time();
+// array_search(mixed $needle, array $haystack, bool $strict = false): int|string|false
 
-echo "$currentTime <br />";//current time
+$array = ['a', 'b', 'c', 'D', 'E', 'ab', 'bc', 'cd', 'b', 'd'];
 
-echo $currentTime + 5 * 24 * 60 * 60 .'<br />';//5 days from now
+$key = array_search('a', $array);//case sensitive
 
-echo $currentTime - 24 * 60 * 60 .'<br /><br />'; //yesterday
-
-echo date('n/d/Y g:ia', $currentTime) .'<br />';
-echo date('n/d/Y g:ia', $currentTime + 5 * 24 * 60 * 60) .'<br />';
-echo date('n/d/Y g:ia', $currentTime  - 24 * 60 * 60) .'<br />';
+if (in_array('a', $array)) {
+  echo "Letter found <br />------------------------------------------------<br />";
+}
 
 
+$array1 = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
+$array2 = ['f' => 4, 'g' => 5, 'i' => 6, 'j' => 7, 'k' => 8];
+$array3 = ['l' => 3, 'm' => 9, 'n' => 10];
+
+nicePrint(array_diff($array1, $array2, $array3));
+nicePrint(array_diff_key($array1, $array2, $array3));
+nicePrint(array_diff_assoc($array1, $array2, $array3));
+
+//sorting
+asort($items);//sort by values
+nicePrint($items);
+ksort($items);//sort by keys
+nicePrint($items);
+usort($items, fn($a, $b)=> $a <=> $b);//removes custom keys and adds numeric keys
+nicePrint($items);
